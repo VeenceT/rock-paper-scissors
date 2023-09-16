@@ -1,15 +1,16 @@
-// ----- PSEUDOCODE -----
+// --- PSEUDOCODE ---
 
 // - Make a function that plays a single round of rock paper scissors (singleRound(playerSelection, computerSelection))
 // and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 // ---> return the result
 
-// - Ask input playerSelection via prompt("Chose between rock  paper, scissors")
+// - Ask input playerSelection via prompt("Chose between Rock, Paper & Scissors")
 // ---> case insensitive + return the result
 
 // - Make the computer randomly choose rock, paper or scissors (getComputerChoice())
 // ---> return the result
 
+// ----- COMPUTER SELECTION -----
 let getComputerChoice = Math.floor(Math.random() * 3 + 1);
 
 let computerSelection = () => {
@@ -24,4 +25,12 @@ let computerSelection = () => {
     return computerSelection;
   }
 };
-console.log(computerSelection());
+// console.log(computerSelection());
+
+// ----- PLAYER SELECTION -----
+let getPlayerSelection = () => {
+  let getPlayerInput = prompt("Choose between Rock, Paper & Scissors");
+  let playerSelection = getPlayerInput.toLowerCase();
+  return playerSelection;
+};
+console.log(getPlayerSelection());
