@@ -11,21 +11,22 @@
 // ---> return the result
 
 // ----- COMPUTER SELECTION -----
-let getComputerChoice = Math.floor(Math.random() * 3 + 1);
 
-let computerSelection = () => {
+let getComputerSelection = () => {
+  let getComputerChoice = Math.floor(Math.random() * 3 + 1);
+
   if (getComputerChoice === 1) {
-    computerSelection = "rock";
+    let computerSelection = "rock";
     return computerSelection;
   } else if (getComputerChoice === 2) {
-    computerSelection = "paper";
+    let computerSelection = "paper";
     return computerSelection;
   } else {
-    computerSelection = "scissors";
+    let computerSelection = "scissors";
     return computerSelection;
   }
 };
-// console.log(computerSelection());
+// console.log(getComputerSelection());
 
 // ----- PLAYER SELECTION -----
 let getPlayerSelection = () => {
@@ -33,4 +34,30 @@ let getPlayerSelection = () => {
   let playerSelection = getPlayerInput.toLowerCase();
   return playerSelection;
 };
-console.log(getPlayerSelection());
+// console.log(getPlayerSelection());
+
+// ----- SINGLE ROUND -----
+let playRound = (playerSelection, computerSelection) => {
+  playerSelection = getPlayerSelection();
+  computerSelection = getComputerSelection();
+
+  console.log(`player: ${playerSelection}, computer: ${computerSelection}`);
+
+  if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    return ` 🟢 You win, ${playerSelection} beats ${computerSelection}!`;
+  } else if (
+    (computerSelection === "rock" && playerSelection === "scissors") ||
+    (computerSelection === "paper" && playerSelection === "rock") ||
+    (computerSelection === "scissors" && playerSelection === "paper")
+  ) {
+    return ` 🔴 You loose, ${computerSelection} beats ${playerSelection}!`;
+  } else {
+    return `🟠 Tie, you both played ${playerSelection}`;
+  }
+};
+
+console.log(playRound());
