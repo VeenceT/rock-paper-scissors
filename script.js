@@ -1,6 +1,9 @@
+// ----- GAME -----
+
 let playerPoints = 0;
 let computerPoints = 0;
 let tiePoints = 0;
+
 let game = () => {
   for (let i = 1; i <= 5; i++) {
     // ----- COMPUTER SELECTION -----
@@ -42,7 +45,12 @@ let game = () => {
         (playerSelection === "scissors" && computerSelection === "paper")
       ) {
         console.log(
-          `🟢 You win, ${playerSelection} beats ${computerSelection}!`
+          `🟢 You win! ${
+            playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+          } beats ${
+            computerSelection.charAt(0).toUpperCase() +
+            computerSelection.slice(1)
+          }!`
         );
         return (
           ++playerPoints, `You : ${playerPoints} - ${computerPoints} : Computer`
@@ -53,14 +61,23 @@ let game = () => {
         (computerSelection === "scissors" && playerSelection === "paper")
       ) {
         console.log(
-          `🔴 You loose, ${computerSelection} beats ${playerSelection}!`
+          `🔴 You loose! ${
+            computerSelection.charAt(0).toUpperCase() +
+            computerSelection.slice(1)
+          } beats ${
+            playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+          }!`
         );
         return (
           ++computerPoints,
           `You : ${playerPoints} - ${computerPoints} : Computer`
         );
       } else {
-        console.log(`🟠 Tie, you both played ${playerSelection}`);
+        console.log(
+          `🟠 Tie! You both played ${
+            playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+          }!`
+        );
         return (
           ++tiePoints, `You : ${playerPoints} - ${computerPoints} : Computer`
         );
