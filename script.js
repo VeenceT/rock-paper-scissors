@@ -1,5 +1,4 @@
 // ----- GAME -----
-
 let playerPoints = 0;
 let computerPoints = 0;
 let tiePoints = 0;
