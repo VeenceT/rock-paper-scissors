@@ -1,15 +1,6 @@
-// --- PSEUDOCODE ---
-
-// - Make a function that plays a single round of rock paper scissors (singleRound(playerSelection, computerSelection))
-// and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
-// ---> return the result
-
-// - Ask input playerSelection via prompt("Chose between Rock, Paper & Scissors")
-// ---> case insensitive + return the result
-
-// - Make the computer randomly choose rock, paper or scissors (getComputerChoice())
-// ---> return the result
-
+let playerPoints = 0;
+let computerPoints = 0;
+let tiePoints = 0;
 let game = () => {
   for (let i = 1; i <= 5; i++) {
     // ----- COMPUTER SELECTION -----
@@ -39,29 +30,51 @@ let game = () => {
 
     // ----- SINGLE ROUND -----
     let playRound = (playerSelection, computerSelection) => {
-      console.log(`----- Game ${i}/5 -----`);
+      console.log(`----- Round ${i}/5 -----`);
       playerSelection = getPlayerSelection();
       computerSelection = getComputerSelection();
 
-      console.log(`player: ${playerSelection}, computer: ${computerSelection}`);
+      // console.log(`player: ${playerSelection}, computer: ${computerSelection}`);
 
       if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")
       ) {
-        return `🟢 You win, ${playerSelection} beats ${computerSelection}!`;
+        console.log(
+          `🟢 You win, ${playerSelection} beats ${computerSelection}!`
+        );
+        return (
+          ++playerPoints, `You : ${playerPoints} - ${computerPoints} : Computer`
+        );
       } else if (
         (computerSelection === "rock" && playerSelection === "scissors") ||
         (computerSelection === "paper" && playerSelection === "rock") ||
         (computerSelection === "scissors" && playerSelection === "paper")
       ) {
-        return `🔴 You loose, ${computerSelection} beats ${playerSelection}!`;
+        console.log(
+          `🔴 You loose, ${computerSelection} beats ${playerSelection}!`
+        );
+        return (
+          ++computerPoints,
+          `You : ${playerPoints} - ${computerPoints} : Computer`
+        );
       } else {
-        return `🟠 Tie, you both played ${playerSelection}`;
+        console.log(`🟠 Tie, you both played ${playerSelection}`);
+        return (
+          ++tiePoints, `You : ${playerPoints} - ${computerPoints} : Computer`
+        );
       }
     };
     console.log(playRound());
   }
+  if (playerPoints > computerPoints) {
+    console.log(`🟢 Victory : ${playerPoints} - ${computerPoints} 🟢`);
+  } else if (playerPoints < computerPoints) {
+    console.log(`🔴 Defeat : ${playerPoints} - ${computerPoints} 🔴`);
+  } else {
+    console.log(`🟠 Tie : ${tiePoints} - ${tiePoints} 🟠`);
+  }
 };
+
 game();
